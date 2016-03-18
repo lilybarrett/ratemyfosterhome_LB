@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:index, :show]
+  namespace :admin do
+    resources :users, only: [:index, :update, :destroy]
+  end
+
+  resources :users, only: [:show]
 
   get "home", to: "home#show"
 
