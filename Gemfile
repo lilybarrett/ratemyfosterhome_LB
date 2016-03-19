@@ -23,6 +23,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+group :test do
+  gem 'database_cleaner'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -36,10 +40,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry-rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.4.2'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
 end

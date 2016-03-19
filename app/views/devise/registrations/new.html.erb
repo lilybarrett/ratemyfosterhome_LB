@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :phone_number %><br />
+    <%= f.label :phone_number, "Phone Number" %><br />
     <%= f.text_field :phone_number, autofocus: true %>
   </div>
 
@@ -32,12 +32,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Password Confirmation" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign Up" %>
   </div>
 <% end %>
 

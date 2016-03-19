@@ -1,0 +1,24 @@
+example_id                                              | status | run_time        |
+------------------------------------------------------- | ------ | --------------- |
+./spec/features/users/user_creates_account_spec.rb[1:1] | passed | 0.09742 seconds |
+./spec/features/users/user_creates_account_spec.rb[1:2] | passed | 0.07491 seconds |
+./spec/features/users/user_creates_account_spec.rb[1:3] | passed | 0.07794 seconds |
+./spec/features/users/user_deletes_account_spec.rb[1:1] | passed | 0.88289 seconds |
+./spec/features/users/user_signs_in_spec.rb[1:1]        | passed | 0.08154 seconds |
+./spec/features/users/user_signs_in_spec.rb[1:2]        | passed | 0.08437 seconds |
+./spec/features/users/user_signs_in_spec.rb[1:3]        | passed | 0.10467 seconds |
+./spec/features/users/user_signs_in_spec.rb[1:4]        | passed | 0.10715 seconds |
+./spec/features/users/user_signs_out_spec.rb[1:1]       | passed | 0.08402 seconds |
+./spec/features/users/user_updates_account_spec.rb[1:1] | passed | 0.04258 seconds |
+./spec/features/users/user_updates_account_spec.rb[1:2] | passed | 0.22394 seconds |
+./spec/features/users/user_updates_account_spec.rb[1:3] | passed | 0.13971 seconds |
+./spec/features/users/user_updates_account_spec.rb[1:4] | passed | 0.14387 seconds |
+./spec/features/users/user_updates_account_spec.rb[1:5] | passed | 0.19803 seconds |
+./spec/features/users/user_updates_account_spec.rb[1:6] | passed | 0.18479 seconds |
+./spec/models/user_spec.rb[1:1]                         | passed | 0.01049 seconds |
+./spec/models/user_spec.rb[1:2]                         | passed | 0.01395 seconds |
+./spec/models/user_spec.rb[1:3]                         | passed | 0.00903 seconds |
+./spec/models/user_spec.rb[1:4]                         | passed | 0.01093 seconds |
+./spec/models/user_spec.rb[1:5]                         | passed | 0.01197 seconds |
+./spec/models/user_spec.rb[1:6]                         | passed | 0.02882 seconds |
+./spec/models/user_spec.rb[1:7]                         | passed | 0.0084 seconds  |
