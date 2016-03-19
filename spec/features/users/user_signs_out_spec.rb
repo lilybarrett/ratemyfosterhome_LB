@@ -14,5 +14,4 @@ feature "user signs out" do
     expect(page).to have_content("Signed out successfully.")
     expect(page).to have_content("Sign In")
   end
-
 end
