@@ -13,6 +13,12 @@ RSpec.describe User do
 
   it { should_not have_valid(:email).when(nil, "", "user", "users@com") }
 
+  # it do
+  #   should have_valid(:phone_number).when("123-456-7810", "(123) 456-7810")
+  # end
+  #
+  # it { should_not have_valid(:phone_number).when("123-456-789", "(12) 345-6789") }
+
   it "has a matching password confirmation for the password" do
     user = User.new
     user.password = "password"

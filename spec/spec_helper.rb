@@ -1,5 +1,6 @@
 require 'valid_attribute'
 require 'factory_girl'
+require 'capybara/rspec'
 require_relative 'support/factories/factory_girl.rb'
 
 RSpec.configure do |config|
@@ -14,7 +15,7 @@ RSpec.configure do |config|
 
   config.example_status_persistence_file_path = "spec/examples.txt"
 
-  config.disable_monkey_patching!
+  # config.disable_monkey_patching!
 
   if config.files_to_run.one?
     config.default_formatter = 'doc'

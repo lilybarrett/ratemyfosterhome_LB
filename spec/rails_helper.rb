@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'shoulda-matchers'
 require 'database_cleaner'
 require 'capybara/rspec'
-require 'factory_girl_rails'
 require 'spec_helper'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
