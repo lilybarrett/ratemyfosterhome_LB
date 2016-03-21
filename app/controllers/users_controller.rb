@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show 
+  def show
+    @user = User.find(params[:id])
+    @foster_kids = @user.foster_kids
   end
 end

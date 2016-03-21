@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) <<
       [:phone_number]
   end
+
+  def raise_error
+    raise ActionController::RoutingError.new("Only admins authorized to view this page")
+  end
 end
