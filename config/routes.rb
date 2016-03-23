@@ -3,12 +3,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:show, :index, :update, :destroy]
-    resources :foster_kids, only: [:index, :new, :create]
   end
 
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
 
-  resources :foster_kids, only: [:show, :edit, :update]
+  resources :foster_kids
 
   get "home", to: "home#show"
 
