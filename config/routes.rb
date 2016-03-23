@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    resources :users, only: [:index, :update, :destroy]
+    resources :users, only: [:show, :index, :update, :destroy]
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
+
+  resources :foster_kids
 
   get "home", to: "home#show"
 

@@ -1,0 +1,11 @@
+<% if current_user.admin? %>
+  <h1>All Cases</h1>
+<% else %>
+  <h1>My Cases</h1>
+<% end %>
+
+<ul>
+<% @foster_kids.each do |foster_kid| %>
+  <li><%= link_to foster_kid.first_name + " " + foster_kid.last_name, foster_kid_path(foster_kid) %></li>
+<% end %>
+</ul>

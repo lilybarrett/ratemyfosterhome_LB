@@ -1,0 +1,17 @@
+<h1>Add Foster Child Information</h1>
+
+<%= form_for @foster_kid do |f| %>
+    <div class="field">
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add Foster Child Information", class: "button round submit" %>
+    </div>
+<% end %>
