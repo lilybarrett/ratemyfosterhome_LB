@@ -1,15 +1,19 @@
 class FosterKidsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     if current_user.admin?
       @foster_kids = FosterKid.all
     else
-      raise_error
+      @user = current_user
+      @foster_kids = @user.foster_kids
     end
   end
 
   def show
     @foster_kid = FosterKid.find(params[:id])
-    @user = @foster_kid.user
+    # @user = @foster_kid.user
+    # @homes = @foster_kid.homes
   end
 
   def new
@@ -17,7 +21,7 @@ class FosterKidsController < ApplicationController
       @foster_kid = FosterKid.new
     else
       raise_error
-    end 
+    end
   end
 
   def create
@@ -32,7 +36,7 @@ class FosterKidsController < ApplicationController
   end
 
   def edit
-    @foster_kid = FosterKid.find(params[:foster_kid])
+    @foster_kid = FosterKid.find(params[:id])
   end
 
   def update
@@ -43,6 +47,7 @@ class FosterKidsController < ApplicationController
     else
       flash[:error] = "Please fill out all required fields."
       render :edit
+    end
   end
 
   private

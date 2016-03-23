@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
       [:phone_number]
   end
 
+  def authenticate_user
+    if !user_signed_in?
+      raise_error 
+    end
+  end
+
   def raise_error
     raise ActionController::RoutingError.new("Only admins authorized to view this page")
   end
