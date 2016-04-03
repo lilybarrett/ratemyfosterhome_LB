@@ -7,13 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <h1>Rate My Foster Home</h1>
   <% if user_signed_in? %>
     <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
     <%= link_to "Edit Account", edit_user_registration_path %>
     <% if current_user.admin? %>
-      <%= link_to "Admin Dashboard", "#" %>
+    <h1>Admin Dashboard</h1>
       <%= link_to "Add Child", new_foster_kid_path %>
+      <%= link_to "Assign Social Worker to Child", new_foster_home_path %>
+      <%= link_to "Assign Child to Home", "#" %>
     <% end %>
   <% else %>
     <%= link_to "Register", new_user_registration_path %>

@@ -1,0 +1,16 @@
+<h1>Assign a Social Worker to a Child</h1>
+  <%= form_for @foster_home do |f| %>
+    <div class="field">
+      <%= f.label :foster_kid_id, "Select a Child" %>
+      <%= f.select(:foster_kid_id, options_for_select(@child_results)) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id, "Assign To:" %>
+      <%= f.select(:user_id, options_for_select(@user_results)) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create Home", class: "button round submit" %>
+    </div>
+  <% end %>

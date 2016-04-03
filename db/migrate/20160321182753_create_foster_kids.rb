@@ -4,7 +4,7 @@ class CreateFosterKids < ActiveRecord::Migration
       t.string :first_name, null: false
       t.string :last_name, null: false
 
-      t.belongs_to :user 
+      t.belongs_to :user
     end
   end
 end

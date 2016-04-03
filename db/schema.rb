@@ -11,15 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321182753) do
+ActiveRecord::Schema.define(version: 20160403171648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "foster_homes", force: :cascade do |t|
+    t.boolean "active",           default: true, null: false
+    t.integer "foster_kid_id"
+    t.integer "foster_parent_id"
+    t.integer "user_id"
+  end
 
   create_table "foster_kids", force: :cascade do |t|
     t.string  "first_name", null: false
     t.string  "last_name",  null: false
     t.integer "user_id"
+  end
+
+  create_table "foster_parents", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name",  null: false
   end
 
   create_table "users", force: :cascade do |t|

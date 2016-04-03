@@ -23,6 +23,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @foster_kids = @user.foster_kids
+    @foster_homes = @user.foster_homes
   end
 
   def destroy

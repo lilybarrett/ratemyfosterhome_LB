@@ -1,0 +1,6 @@
+<h1>All Foster Homes</h1>
+<ul>
+<% @foster_homes.each do |foster_home| %>
+  <li><%= foster_home.foster_kid.last_name %></li>
+<% end %>
+</ul>
