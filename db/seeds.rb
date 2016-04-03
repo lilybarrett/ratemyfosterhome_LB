@@ -1,7 +1,2 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+types =
+  Type.create([{type_name: "Foster Youth Form", question: "On a scale of 0-10, where 0 is not likely and 10 is extremely likely how likely are you to recommend your foster home to a friend in the foster care system?"}, {type_name: "Parent Form", question: "On a scale of 0-10, where 0 is not likely and 10 is extremely likely, how likely are you to recommend this foster home to another foster parent?"}, {type_name: "Social Worker Form", question: "On a scale of 0-10, where 0 is not likely and 10 is extremely likely, how likely are you to recommend this foster home?"}])

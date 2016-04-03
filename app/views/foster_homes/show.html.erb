@@ -5,4 +5,15 @@
   <li>Foster Parent: <%= @foster_home.foster_parent.last_name %></li>
 </ul>
 
+<h1>Reviews</h1>
+<ul>
+  <% @reviews.each do |review| %>
+    <li><%= review.type.type_name %></li>
+    <li><%= review.rating %></li>
+    <li><%= review.comment %></li>
+    <br>
+  <% end %>
+</ul>
+
 <%= link_to "Edit Home Information", edit_foster_home_path(@foster_home) %>
+<%= link_to "Add Review", new_foster_home_review_path(@foster_home, @review) %>
