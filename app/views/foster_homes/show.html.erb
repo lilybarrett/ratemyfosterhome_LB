@@ -1,5 +1,8 @@
 <h1>Foster Home Information</h1>
 <ul>
-  <li>Social Worker: <%= @foster_home.user.last_name%></li>
-  <li>Child: <%= @foster_home.foster_kid.last_name %></li>
+  <li>Social Worker: <%= @foster_home.user.last_name %></li>
+  <li>Foster Child: <%= @foster_home.foster_kid.last_name %></li>
+  <li>Foster Parent: <%= @foster_home.foster_parent.last_name %></li>
 </ul>
+
+<%= link_to "Edit Home Information", edit_foster_home_path(@foster_home) %>

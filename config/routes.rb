@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :foster_kids
 
-  resources :foster_homes 
+  resources :foster_homes
+
+  resources :foster_parents 
 
   get "home", to: "home#show"
 

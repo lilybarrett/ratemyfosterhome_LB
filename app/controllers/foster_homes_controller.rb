@@ -13,6 +13,7 @@ class FosterHomesController < ApplicationController
     @foster_home = FosterHome.new
     @user_results = User.categories_for_user_dropdown
     @child_results = FosterKid.categories_for_child_dropdown
+    @parent_results = FosterParent.categories_for_parent_dropdown
   end
 
   def create
