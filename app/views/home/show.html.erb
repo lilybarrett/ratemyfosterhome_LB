@@ -1,1 +1,9 @@
-
+<% if current_user.admin? %>
+<h1>Admin Dashboard</h1>
+  <%= link_to "Add Child", new_foster_kid_path %>
+  <%= link_to "Add Foster Parent", new_foster_parent_path %>
+  <%= link_to "See All Homes", foster_homes_path %>
+  <%= link_to "See All Foster Parents", foster_parents_path %>
+  <%= link_to "See All Foster Children", foster_kids_path %>
+  <%= link_to "Create Home Assignment", new_foster_home_path %>
+<% end %>

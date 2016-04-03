@@ -4,7 +4,7 @@ class FosterKid < ActiveRecord::Base
 
   belongs_to :user
   has_many :foster_homes
-  has_many :foster_parents, through: :foster_homes 
+  has_many :foster_parents, through: :foster_homes
 
   def self.categories_for_child_dropdown
     all.map { |u| [u.last_name, u.id] }

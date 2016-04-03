@@ -1,4 +1,11 @@
 <h1>Foster Home Information</h1>
+
+<% if @foster_home.active? %>
+  <h2>Active</h2>
+<% else %>
+  <h2><em>Archived</em></h2>
+<% end %>
+
 <ul>
   <li>Social Worker: <%= @foster_home.user.last_name %></li>
   <li>Foster Child: <%= @foster_home.foster_kid.last_name %></li>

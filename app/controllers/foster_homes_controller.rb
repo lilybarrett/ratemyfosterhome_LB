@@ -27,19 +27,27 @@ class FosterHomesController < ApplicationController
     end
   end
 
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # def destroy
-  # end
+  def edit
+    @foster_home = FosterHome.find(params[:id])
+    @user_results = User.categories_for_user_dropdown
+  end
+
+  def update
+    @foster_home = FosterHome.find(params[:id])
+    if @foster_home.update_attributes(foster_home_params)
+      flash[:notice] = "Foster Home information successfully updated"
+      redirect_to foster_home_path(@foster_home)
+    else
+      flash[:error] = "Please fill out all required fields."
+      render :edit
+    end
+  end
 
   private
 
   def foster_home_params
     params.require(:foster_home).permit(
+      :active,
       :foster_kid_id,
       :foster_parent_id,
       :user_id
