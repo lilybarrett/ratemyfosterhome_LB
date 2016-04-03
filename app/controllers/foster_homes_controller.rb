@@ -7,6 +7,7 @@ class FosterHomesController < ApplicationController
 
   def show
     @foster_home = FosterHome.find(params[:id])
+    @reviews = @foster_home.reviews
   end
 
   def new

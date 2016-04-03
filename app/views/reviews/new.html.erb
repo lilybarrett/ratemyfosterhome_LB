@@ -1,0 +1,33 @@
+<h1>New Review for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h1>
+
+<div class="row">
+  <div class="small-6 small-centered columns border">
+    <%= form_for [@foster_home, @review] do |f| %>
+
+      <div class="field">
+        <%= f.label :type_id, "Select a Review Type" %>
+        <%= f.collection_select(:type_id, Type.all, :id, :type_name) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :rating, "Rating"%>
+        <%= f.text_field :rating %>
+      </div>
+
+      <div class="field">
+        <%= f.label :comment, "Comments" %>
+        <%= f.text_field :comment %>
+      </div>
+
+      <div class="actions ">
+        <%= f.submit class: "button round form-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-6 small-centered columns back-link">
+    <%= link_to "Back", foster_home_path(@foster_home) %>
+  </div>
+</div>
