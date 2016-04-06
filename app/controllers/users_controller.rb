@@ -1,4 +1,8 @@
-class Admin::UsersController < ApplicationController
+class UsersController < ApplicationController
+
+  include PgSearch
+  pg_search_scope :search_by_id, against: [:id]
+
   before_action :authenticate_user
 
   def index
@@ -27,7 +31,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to admin_users_path
+    if current_user.admin? || current_user
+      User.find(params[:id]).destroy
+      redirect_to admin_users_path
+    else
+      raise_error
+    end
   end
 end

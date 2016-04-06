@@ -23,6 +23,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+gem 'pg_search'
+
 group :test do
   gem 'database_cleaner'
 end
