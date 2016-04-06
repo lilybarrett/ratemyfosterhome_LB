@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
 
   <% if current_user.admin? %>
+
     <h1>Admin Dashboard</h1>
 
       <%= link_to "Add Child", new_foster_kid_path %>
@@ -15,6 +16,7 @@
       <br>
       <%= link_to "See All Foster Children", foster_kids_path %>
       <br>
+      
   <% end %>
 
 <% end %>
