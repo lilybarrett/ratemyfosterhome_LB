@@ -3,15 +3,6 @@
   <% if current_user.admin? %>
     <h1>Admin Dashboard</h1>
 
-      <div>
-       <%= form_tag("/search", method: 'get') do %>
-          <%= label_tag "Search by social worker by last name" %>
-          <%= select_tag :query, options_from_collection_for_select(User.all, "id", "last_name") %>
-           <!-- <span><%= text_field_tag :query, params[:query] %></span> -->
-           <span><%= submit_tag "Search", :name => nil, class: "search-button" %></span>
-       <% end %>
-      </div>
-
       <%= link_to "Add Child", new_foster_kid_path %>
       <br>
       <%= link_to "Add Foster Parent", new_foster_parent_path %>

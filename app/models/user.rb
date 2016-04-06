@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include PgSearch
-  pg_search_scope :search_by_id, against: [:id]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :foster_kids

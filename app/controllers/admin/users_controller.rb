@@ -1,7 +1,4 @@
-class UsersController < ApplicationController
-
-  include PgSearch
-  pg_search_scope :search_by_id, against: [:id]
+class Admin::UsersController < ApplicationController
 
   before_action :authenticate_user
 

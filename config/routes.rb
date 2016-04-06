@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show, :index, :update, :destroy]
+  resources :users, only: [:show]
 
-  # namespace :admin do
-  #   resources :users, only: [:index, :update, :destroy]
-  # end
+  namespace :admin do
+     resources :users, only: [:index, :update, :destroy]
+  end
 
   resources :foster_kids
 
@@ -18,5 +18,4 @@ Rails.application.routes.draw do
 
   root 'home#show'
 
-  get '/search' => 'search#index'
 end
