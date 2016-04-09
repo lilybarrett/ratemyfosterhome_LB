@@ -1,6 +1,12 @@
 <% if user_signed_in? %>
 
   <% if current_user.admin? %>
+
+  <%= form_tag(admin_users_path, :method => "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
     <h1>Admin Dashboard</h1>
       <%= link_to "Add Child", new_foster_kid_path %>
       <br>

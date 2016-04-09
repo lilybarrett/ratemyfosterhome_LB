@@ -3,7 +3,11 @@ class Admin::UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @users = User.all
+      if params[:search]
+        @users = User.search(params[:search]).order("last_name ASC")
+      else
+        @users = User.all.order("last_name ASC")
+      end
     else
       raise_error
     end
@@ -22,7 +26,6 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @foster_kids = @user.foster_kids
     @foster_homes = @user.foster_homes
   end
 

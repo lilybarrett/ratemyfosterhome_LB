@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :foster_kids
-  has_many :foster_homes, through: :foster_kids
+  has_many :foster_homes
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
 
   def self.categories_for_user_dropdown
     all.map { |u| [u.last_name, u.id] }
+  end
+
+  def self.search(query)
+    where("last_name ILIKE ?", "%#{query}%")
   end
 end
