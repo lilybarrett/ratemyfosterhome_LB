@@ -24,9 +24,8 @@ ActiveRecord::Schema.define(version: 20160403223756) do
   end
 
   create_table "foster_kids", force: :cascade do |t|
-    t.string  "first_name", null: false
-    t.string  "last_name",  null: false
-    t.integer "user_id"
+    t.string "first_name", null: false
+    t.string "last_name",  null: false
   end
 
   create_table "foster_parents", force: :cascade do |t|

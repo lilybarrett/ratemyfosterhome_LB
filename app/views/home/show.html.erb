@@ -2,6 +2,12 @@
 
   <% if current_user.admin? %>
 
+  <%= form_tag(admin_users_path, :method => "get") do %>
+    <%= label_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= select_tag :search, options_for_select(@user_results) %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+
     <h1>Admin Dashboard</h1>
 
       <%= link_to "Add Child", new_foster_kid_path %>
@@ -16,7 +22,7 @@
       <br>
       <%= link_to "See All Foster Children", foster_kids_path %>
       <br>
-      
+
   <% end %>
 
 <% end %>
