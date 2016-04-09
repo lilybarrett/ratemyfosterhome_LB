@@ -3,7 +3,8 @@
   <% if current_user.admin? %>
 
   <%= form_tag(admin_users_path, :method => "get") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= label_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= select_tag :search, options_for_select(@user_results) %>
     <%= submit_tag "Search", :name => nil %>
   <% end %>
 

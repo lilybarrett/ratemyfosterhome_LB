@@ -4,7 +4,8 @@ class Admin::UsersController < ApplicationController
   def index
     if current_user.admin?
       if params[:search]
-        @users = User.search(params[:search]).order("last_name ASC")
+        @user = User.find(params[:search])
+        @foster_homes = @user.foster_homes
       else
         @users = User.all.order("last_name ASC")
       end

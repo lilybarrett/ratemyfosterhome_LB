@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("last_name ILIKE ?", "%#{query}%")
+    where("last_name LIKE ?", "%#{query}%")
   end
 end
