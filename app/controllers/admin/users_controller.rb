@@ -26,11 +26,6 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  def show
-    @user = User.find(params[:id])
-    @foster_homes = @user.foster_homes
-  end
-
   def destroy
     if current_user.admin? || current_user
       User.find(params[:id]).destroy

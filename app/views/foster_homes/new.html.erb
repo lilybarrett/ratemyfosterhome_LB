@@ -1,7 +1,7 @@
 <h1>New Home Assignment</h1>
   <%= form_for @foster_home do |f| %>
     <div class="field">
-      <%= f.label :foster_kid_id, "Select a Child" %>
+      <%= f.label :foster_kid_id, "Select a Foster Child" %>
       <%= f.select(:foster_kid_id, options_for_select(@child_results)) %>
     </div>
 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :user_id, "Assign To:" %>
+      <%= f.label :user_id, "Assign To Social Worker:" %>
       <%= f.select(:user_id, options_for_select(@user_results)) %>
     </div>
 
