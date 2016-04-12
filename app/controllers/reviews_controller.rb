@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(
       :rating,
       :comment,
-      :type_id 
+      :type_id
     )
   end
 end
