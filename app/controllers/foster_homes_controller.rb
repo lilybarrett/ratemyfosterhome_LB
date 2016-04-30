@@ -7,7 +7,9 @@ class FosterHomesController < ApplicationController
 
   def show
     @foster_home = FosterHome.find(params[:id])
-    @reviews = @foster_home.reviews
+    @foster_kid_reviews = @foster_home.foster_kid_reviews
+    @foster_parent_reviews = @foster_home.foster_parent_reviews
+    @social_worker_reviews = @foster_home.social_worker_reviews
   end
 
   def new

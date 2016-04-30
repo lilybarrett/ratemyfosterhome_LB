@@ -1,0 +1,22 @@
+<h1>New Review for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h1>
+
+    <h3>Reviewer Type: Foster Parent</h3>
+
+    <%= form_for [@foster_home, @foster_parent_review] do |f| %>
+
+      <div class="field">
+        <%= f.label :rating, "On a scale of 0-10, where 0 is not likely and 10 is extremely likely, how likely are you to recommend this foster home to another foster parent?"%>
+        <%= f.text_field :rating %>
+      </div>
+
+      <div class="field">
+        <%= f.label :comment, "Comments" %>
+        <%= f.text_field :comment %>
+      </div>
+
+      <div class="actions ">
+        <%= f.submit class: "button round form-button" %>
+      </div>
+    <% end %>
+
+    <%= link_to "Back", foster_home_path(@foster_home) %>
