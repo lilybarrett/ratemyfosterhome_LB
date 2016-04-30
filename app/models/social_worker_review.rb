@@ -1,7 +1,6 @@
-class Review < ActiveRecord::Base
+class SocialWorkerReview < ActiveRecord::Base
   belongs_to :user
   belongs_to :foster_home
-  belongs_to :type 
 
   validates :rating, presence: true, numericality: {
     only_integer: true

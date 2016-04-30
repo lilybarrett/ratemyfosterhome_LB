@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403223756) do
+ActiveRecord::Schema.define(version: 20160430211018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,27 @@ ActiveRecord::Schema.define(version: 20160403223756) do
     t.integer "user_id"
   end
 
+  create_table "foster_kid_reviews", force: :cascade do |t|
+    t.integer  "rating",         null: false
+    t.text     "comment",        null: false
+    t.integer  "user_id",        null: false
+    t.integer  "foster_home_id", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "foster_kids", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name",  null: false
+  end
+
+  create_table "foster_parent_reviews", force: :cascade do |t|
+    t.integer  "rating",         null: false
+    t.text     "comment",        null: false
+    t.integer  "user_id",        null: false
+    t.integer  "foster_home_id", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "foster_parents", force: :cascade do |t|
@@ -33,19 +51,13 @@ ActiveRecord::Schema.define(version: 20160403223756) do
     t.string "last_name",  null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "social_worker_reviews", force: :cascade do |t|
     t.integer  "rating",         null: false
     t.text     "comment",        null: false
     t.integer  "user_id",        null: false
     t.integer  "foster_home_id", null: false
-    t.integer  "type_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "type_name", null: false
-    t.string "question",  null: false
   end
 
   create_table "users", force: :cascade do |t|
