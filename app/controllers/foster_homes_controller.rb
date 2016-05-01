@@ -10,10 +10,12 @@ class FosterHomesController < ApplicationController
     @foster_kid_reviews = @foster_home.foster_kid_reviews
     @foster_parent_reviews = @foster_home.foster_parent_reviews
     @social_worker_reviews = @foster_home.social_worker_reviews
-    @all_home_reviews_by_date = []
-    @all_home_reviews_by_date =
+    @all_home_reviews = []
+    @all_home_reviews =
       @foster_kid_reviews + @foster_parent_reviews + @social_worker_reviews
-    @all_home_reviews_by_date.sort_by! { |review| review.created_at }
+    # @all_home_reviews_by_date.sort_by! { |review| review.created_at }
+    @all_home_reviews_by_date =
+      @all_home_reviews.group_by_day { |review| review.created_at }
   end
 
   def new
