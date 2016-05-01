@@ -13,38 +13,26 @@
 </ul>
 
 <h1>Reviews</h1>
-  <% if !@foster_kid_reviews.nil? %>
-    <h3>Foster Youth Reviews</h3>
-    <ul>
-      <% @foster_kid_reviews.each do |foster_kid_review| %>
-        <li><%= foster_kid_review.rating %></li>
-        <li><%= foster_kid_review.comment %></li>
-        <li><%= foster_kid_review.created_at %></li>
+  <% if !@all_home_reviews_by_date.nil? %>
+    <% @all_home_reviews_by_date.each do |date, reviews| %>
+      <ul>
+        <h2><%= date.strftime("%m/%d/%Y") %></h2>
+        <% reviews.each do |review| %>
+          <% if @foster_kid_reviews.include?(review) %>
+          <h3>Foster Youth Review</h3>
+          <% end %>
+          <% if @foster_parent_reviews.include?(review) %>
+          <h3>Foster Parent Review</h3>
+          <% end %>
+          <% if @social_worker_reviews.include?(review) %>
+          <h3>Social Worker Review</h3>
+          <% end %>
+            <li>Rating: <%= review.rating %></li>
+            <li>Comment: <%= review.comment %></li>
+        <% end %>
         <br>
-      <% end %>
-    </ul>
-  <% end %>
-  <% if !@foster_parent_reviews.nil? %>
-    <h3>Foster Parent Reviews</h3>
-    <ul>
-      <% @foster_parent_reviews.each do |foster_parent_review| %>
-        <li><%= foster_parent_review.rating %></li>
-        <li><%= foster_parent_review.comment %></li>
-        <li><%= foster_parent_review.created_at %></li>
-        <br>
-      <% end %>
-    </ul>
-  <% end %>
-  <% if !@social_worker_reviews.nil? %>
-    <h3>Social Worker Reviews</h3>
-    <ul>
-      <% @social_worker_reviews.each do |social_worker_review| %>
-        <li><%= social_worker_review.rating %></li>
-        <li><%= social_worker_review.comment %></li>
-        <li><%= social_worker_review.created_at %></li>
-        <br>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
   <% end %>
 
 <%= link_to "Edit Home Information", edit_foster_home_path(@foster_home) %>
