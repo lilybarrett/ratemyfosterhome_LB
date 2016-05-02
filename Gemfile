@@ -25,6 +25,8 @@ gem 'devise'
 
 gem 'groupdate'
 
+gem 'lazy_high_charts'
+
 group :test do
   gem 'database_cleaner'
 end

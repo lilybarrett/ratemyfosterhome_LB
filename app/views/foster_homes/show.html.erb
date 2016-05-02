@@ -12,6 +12,10 @@
   <li>Foster Parent: <%= @foster_home.foster_parent.last_name %></li>
 </ul>
 
+<div id="container" style="width:100%; height:400px;">
+  <%= render "data/data" %>
+</div>
+
 <h1>Reviews</h1>
   <% if !@all_home_reviews_by_date.nil? %>
     <% @all_home_reviews_by_date.each do |date, reviews| %>
