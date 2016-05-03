@@ -79,7 +79,6 @@ GEM
       activesupport (>= 4.1.0)
     groupdate (2.5.3)
       activesupport (>= 3)
-    hash-deep-merge (0.1.1)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -91,8 +90,6 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
-    lazy_high_charts (1.5.5)
-      hash-deep-merge
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -215,7 +212,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
-  lazy_high_charts
   pg (~> 0.15)
   pry-rails
   rails (= 4.2.5)
