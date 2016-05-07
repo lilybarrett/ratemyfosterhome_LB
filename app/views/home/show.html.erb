@@ -6,7 +6,7 @@
         <h4>Admin Dashboard</h4>
       </div>
     </div>
-    <div class="row">
+    <div class="dashboard row">
       <div class="small-12 columns">
         <%= form_tag(admin_users_path, :method => "get") do %>
           <%= label_tag "Find Social Worker", params[:search] %>
@@ -15,14 +15,23 @@
         <% end %>
       </div>
     </div>
-    <div class="actions row">
+    <div class="dashboard row">
       <div class="small-12 columns">
-        <%= link_to "Add Child", new_foster_kid_path %>
-        <br>
-        <%= link_to "Add Foster Parent", new_foster_parent_path %>
-        <br>
-        <%= link_to "Assign Case", new_foster_home_path %>
-        <br>
+        <%= render "create_case" %>
+      </div>
+    </div>
+    <div class="dashboard row">
+      <div class="small-12 columns">
+        <%= render "create_youth" %>
+      </div>
+    </div>
+    <div class="dashboard row">
+      <div class="small-12 columns">
+        <%= render "create_parent" %>
+      </div>
+    </div>
+    <div class="dashboard actions row">
+      <div class="small-12 columns">
         <%= link_to "See All Cases", foster_homes_path %>
         <br>
         <%= link_to "See All Foster Parents", foster_parents_path %>

@@ -1,0 +1,26 @@
+<h3>Create Case Assignment</h3>
+  <%= form_for @foster_home do |f| %>
+    <div class="field">
+      <%= f.label :foster_kid_id, "Select a Foster Child" %>
+      <%= f.select(:foster_kid_id, options_for_select(@child_results)) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :foster_parent_id, "Select a Foster Parent" %>
+      <%= f.select(:foster_parent_id, options_for_select(@parent_results)) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id, "Assign To Social Worker:" %>
+      <%= f.select(:user_id, options_for_select(@user_results)) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :active, "Active?" %>
+      <%= f.check_box :active %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Assign Case", class: "button round submit" %>
+    </div>
+  <% end %>
