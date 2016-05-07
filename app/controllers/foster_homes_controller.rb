@@ -15,13 +15,10 @@ class FosterHomesController < ApplicationController
       @foster_kid_reviews + @foster_parent_reviews + @social_worker_reviews
     @all_home_reviews_by_date =
       @all_home_reviews.group_by_day { |review| review.created_at }
-<<<<<<< HEAD
     @all_home_reviews_by_date.delete_if { |k,v| v.empty? }
-=======
     # @data = []
     # @all_home_reviews.each { |review| @data << review.rating }
     # @dates = @all_home_reviews_by_date.keys.map! { |date| date.strftime("%m/%d/%Y") }
->>>>>>> c79392d78a5cff8ca21b2c6fa7b1c9fa5ca5657f
   end
 
   def new

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -52,29 +51,4 @@
     <%= yield %>
 
   </body>
-=======
-<html>
-<head>
-  <title>Ratemyfosterhome</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <h1><%= link_to "Rate My Foster Home", root_path %></h1>
-  <% if user_signed_in? %>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-    <%= link_to "Edit Account", edit_user_registration_path %>
-  <% else %>
-    <%= link_to "Register", new_user_registration_path %>
-    <%= link_to "Sign In", new_user_session_path %>
-  <% end %>
-
-  <% flash.each do |key, value| %>
-       <%= value %>
-  <% end %>
-
-  <%= yield %>
-</body>
->>>>>>> c79392d78a5cff8ca21b2c6fa7b1c9fa5ca5657f
 </html>
