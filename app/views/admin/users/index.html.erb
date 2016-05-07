@@ -1,6 +1,6 @@
   <% if params[:search] %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-    <% if @foster_homes.nil? %>
+    <% unless @foster_homes.empty? %>
       <ul>
         <% @foster_homes.each do |foster_home| %>
           <li><%= link_to "#{foster_home.foster_kid.last_name}", foster_kid_path(foster_home.foster_kid) %> </li>
