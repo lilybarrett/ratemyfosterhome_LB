@@ -1,9 +1,9 @@
-<h1>Case Information</h1>
+<h3>Case Information</h3>
 
 <% if @foster_home.active? %>
-  <h2>Active</h2>
+  <h4>Active</h4>
 <% else %>
-  <h2><em>Archived</em></h2>
+  <h4><em>Archived</em></h4>
 <% end %>
 
 <ul>
@@ -17,11 +17,11 @@
   <%= render "data" %>
 </div>
 
-<h1>Reviews</h1>
+<h3>Reviews</h3>
   <% if !@all_home_reviews_by_date.nil? %>
     <% @all_home_reviews_by_date.each do |date, reviews| %>
       <ul>
-        <h2><%= date.strftime("%m/%d/%Y") %></h2>
+        <h3><%= date.strftime("%m/%d/%Y") %></h3>
         <% reviews.each do |review| %>
           <% if @foster_kid_reviews.include?(review) %>
           <h3>Foster Youth Review</h3>

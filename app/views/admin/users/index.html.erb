@@ -1,12 +1,16 @@
   <% if params[:search] %>
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <ul>
-      <% @foster_homes.each do |foster_home| %>
-        <li><%= link_to "#{foster_home.foster_kid.last_name}", foster_kid_path(foster_home.foster_kid) %> </li>
-      <% end %>
-    </ul>
+    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    <% if @foster_homes.nil? %>
+      <ul>
+        <% @foster_homes.each do |foster_home| %>
+          <li><%= link_to "#{foster_home.foster_kid.last_name}", foster_kid_path(foster_home.foster_kid) %> </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3><em>Available for new case assignments</em></h3>
+    <% end %>
   <% else %>
-    <h1>All Users</h1>
+    <h3>All Social Workers Registered On Site</h3>
       <ul>
         <% @users.each do |user| %>
           <li><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></li>
