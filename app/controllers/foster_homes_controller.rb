@@ -15,6 +15,7 @@ class FosterHomesController < ApplicationController
       @foster_kid_reviews + @foster_parent_reviews + @social_worker_reviews
     @all_home_reviews_by_date =
       @all_home_reviews.group_by_day { |review| review.created_at }
+    @all_home_reviews_by_date.delete_if { |k,v| v.empty? }
   end
 
   def new

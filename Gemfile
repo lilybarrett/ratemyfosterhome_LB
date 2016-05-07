@@ -25,6 +25,8 @@ gem 'devise'
 
 gem 'groupdate'
 
+gem 'foundation-rails'
+
 group :test do
   gem 'database_cleaner'
 end
