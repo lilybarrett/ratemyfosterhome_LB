@@ -15,21 +15,6 @@
         <% end %>
       </div>
     </div>
-    <div class="dashboard row">
-      <div class="small-12 columns">
-        <%= render "create_case" %>
-      </div>
-    </div>
-    <div class="dashboard row">
-      <div class="small-12 columns">
-        <%= render "create_youth" %>
-      </div>
-    </div>
-    <div class="dashboard row">
-      <div class="small-12 columns">
-        <%= render "create_parent" %>
-      </div>
-    </div>
     <div class="dashboard actions row">
       <div class="small-12 columns">
         <%= link_to "See All Cases", foster_homes_path %>
@@ -43,5 +28,30 @@
       </div>
     </div>
 
+    <div class="dashboard row">
+      <div class="small-12 small-centered columns">
+        <ul class="tabs" data-tab>
+          <li class="tab-title active"><a href="#panel1">Create Case</a></li>
+          <li class="tab-title"><a href="#panel2">Add Foster Youth</a></li>
+          <li class="tab-title"><a href="#panel3">Add Foster Parent</a></li>
+        </ul>
+        <div class="tabs-content">
+          <div class="content active" id="panel1">
+            <%= render "create_case" %>
+          </div>
+          <div class="content" id="panel2">
+            <%= render "create_youth" %>
+          </div>
+          <div class="content" id="panel3">
+            <%= render "create_parent" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 <% end %>
+
+<script>
+  $(document).foundation();
+</script>
