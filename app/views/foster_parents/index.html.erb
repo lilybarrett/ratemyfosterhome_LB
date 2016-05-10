@@ -1,6 +1,6 @@
 <h3>All Foster Parents</h3>
 <ul>
 <% @foster_parents.each do |foster_parent| %>
-  <li><%= link_to "#{foster_parent.last_name}", foster_parent_path(foster_parent) %></li>
+  <li><%= link_to "#{foster_parent.first_name} #{foster_parent.last_name}", foster_parent_path(foster_parent) %></li>
 <% end %>
 </ul>
