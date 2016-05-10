@@ -1,7 +1,7 @@
 <h3>Create Case Assignment</h3>
   <%= form_for @foster_home do |f| %>
     <div class="field">
-      <%= f.label :foster_kid_id, "Select a Foster Child" %>
+      <%= f.label :foster_kid_id, "Select a Foster Youth" %>
       <%= f.select(:foster_kid_id, options_for_select(@child_results)) %>
     </div>
 
