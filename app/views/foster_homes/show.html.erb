@@ -40,7 +40,4 @@
     <% end %>
   <% end %>
 
-<%= link_to "Edit Case Information", edit_foster_home_path(@foster_home) %>
-<%= link_to "Add Foster Youth Review", new_foster_home_foster_kid_review_path(@foster_home, @foster_kid_review) %>
-<%= link_to "Add Foster Parent Review", new_foster_home_foster_parent_review_path(@foster_home, @foster_parent_review) %>
-<%= link_to "Add Social Worker Review", new_foster_home_social_worker_review_path(@foster_home, @social_worker_review) %>
+<%= link_to "Edit Case Information", edit_foster_home_path(@foster_home) %> | <%= link_to "Add Foster Youth Review", new_foster_home_foster_kid_review_path(@foster_home, @foster_kid_review) %> | <%= link_to "Add Foster Parent Review", new_foster_home_foster_parent_review_path(@foster_home, @foster_parent_review) %> | <%= link_to "Add Social Worker Review", new_foster_home_social_worker_review_path(@foster_home, @social_worker_review) %> |
