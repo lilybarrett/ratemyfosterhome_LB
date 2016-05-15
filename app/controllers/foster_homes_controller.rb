@@ -29,12 +29,18 @@ class FosterHomesController < ApplicationController
   end
 
   def create
+    #if foster_home with selected kid already exists AND is active, do not create the home, raise an error.
     @foster_home = FosterHome.new(foster_home_params)
-    @user = User.find(params[:foster_home][:user_id])
-    if @foster_home.save
-      redirect_to foster_home_path(@foster_home)
+    @foster_kid = FosterKid.find(params[:foster_home][:foster_kid_id])
+    unless FosterHome.exists?(foster_kid_id: @foster_kid)
+      if @foster_home.save
+        redirect_to foster_home_path(@foster_home)
+      else
+        redirect_to new_foster_home_path
+      end
     else
-      redirect_to new_foster_home_path
+      flash[:notice] = "This foster youth has already been assigned to a case."
+      redirect_to root_path
     end
   end
 
