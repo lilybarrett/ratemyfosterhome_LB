@@ -3,7 +3,7 @@ class FosterKid < ActiveRecord::Base
   validates :last_name, presence: true
 
   has_many :foster_homes
-  has_many :users, through: :foster_homes 
+  has_many :users, through: :foster_homes
   has_many :foster_parents, through: :foster_homes
 
   def self.categories_for_child_dropdown
