@@ -19,12 +19,6 @@
       <div class="small-12 columns">
         <%= link_to "See All Cases", foster_homes_path %>
         <br>
-        <%= link_to "See All Foster Parents", foster_parents_path %>
-        <br>
-        <%= link_to "See All Foster Youth", foster_kids_path %>
-        <br>
-        <%= link_to "See All Social Workers", admin_users_path %>
-        <br>
       </div>
     </div>
 
@@ -34,6 +28,7 @@
           <li class="tab-title active"><a href="#panel1">Create Case</a></li>
           <li class="tab-title"><a href="#panel2">Add Foster Youth</a></li>
           <li class="tab-title"><a href="#panel3">Add Foster Parent</a></li>
+          <li class="tab-title"><a href="#panel4">See All...</a></li>
         </ul>
         <div class="tabs-content">
           <div class="content active" id="panel1">
@@ -44,6 +39,14 @@
           </div>
           <div class="content" id="panel3">
             <%= render "create_parent" %>
+          </div>
+          <div class="content" id="panel4">
+            <%= link_to "See All Foster Parents", foster_parents_path %>
+            <br>
+            <%= link_to "See All Foster Youth", foster_kids_path %>
+            <br>
+            <%= link_to "See All Social Workers", admin_users_path %>
+            <br>
           </div>
         </div>
       </div>
