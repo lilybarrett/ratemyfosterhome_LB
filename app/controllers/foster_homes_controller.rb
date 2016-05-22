@@ -2,7 +2,8 @@ class FosterHomesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @foster_homes = FosterHome.all
+    @active_foster_homes = FosterHome.where(active: true)
+    @inactive_foster_homes = FosterHome.where(active: false)
   end
 
   def show

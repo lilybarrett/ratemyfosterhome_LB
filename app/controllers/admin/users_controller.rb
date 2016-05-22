@@ -6,7 +6,8 @@ class Admin::UsersController < ApplicationController
     if current_user.admin?
       if params[:search]
         @user = User.find(params[:search])
-        @foster_homes = @user.foster_homes
+        @user_active_foster_homes = @user.foster_homes.where(active: true)
+        @user_inactive_foster_homes = @user.foster_homes.where(active: false)
       else
         @users = User.all.order("last_name ASC")
       end
