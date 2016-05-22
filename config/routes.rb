@@ -20,4 +20,7 @@ Rails.application.routes.draw do
 
   root 'home#show'
 
+  get 'foster_homes/:id/unassign' => 'foster_homes#unassign',
+    as: :foster_homes_unassign
+
 end
