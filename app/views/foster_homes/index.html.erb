@@ -1,6 +1,13 @@
-<h3>All Cases</h3>
+<h3>Active Cases</h3>
 <ul>
-<% @foster_homes.each do |foster_home| %>
-  <li><%= link_to "#{foster_home.foster_kid.last_name}", foster_home_path(foster_home) %></li>
+<% @active_foster_homes.each do |active_foster_home| %>
+  <li><%= link_to "#{active_foster_home.foster_kid.last_name}", foster_home_path(active_foster_home) %></li>
 <% end %>
+</ul>
+
+<h3>Archived Cases</h3>
+<ul>
+  <% @inactive_foster_homes.each do |inactive_foster_home| %>
+    <li><%= link_to "#{inactive_foster_home.foster_kid.last_name}", foster_home_path(inactive_foster_home) %></li>
+  <% end %>
 </ul>

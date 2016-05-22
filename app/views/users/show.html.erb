@@ -1,9 +1,25 @@
-<h1><%= @user.last_name %>'s Cases</h1>
-
-<ul>
-  <% @foster_homes.each do |foster_home| %>
-    <li>
-      <%= link_to "#{foster_home.foster_kid.last_name}", foster_home_path(foster_home) %>
-    </li>
+<% if @user_active_foster_homes.empty? && @user_inactive_foster_homes.empty? %>
+  <h3><%= @user.last_name %> is available for new case assignments.</h3>
+<% else %>
+  <% if !@user_active_foster_homes.empty? %>
+    <h3><%= @user.last_name %>'s Active Cases</h3>
+    <ul>
+      <% @user_active_foster_homes.each do |active_foster_home| %>
+        <li>
+          <%= link_to "#{active_foster_home.foster_kid.last_name}", foster_home_path(active_foster_home) %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+
+  <% if !@user_inactive_foster_homes.empty? %>
+    <h3><%= @user.last_name %>'s Archived Cases</h3>
+    <ul>
+      <% @user_inactive_foster_homes.each do |inactive_foster_home| %>
+        <li>
+          <%= link_to "#{inactive_foster_home.foster_kid.last_name}", foster_home_path(inactive_foster_home) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

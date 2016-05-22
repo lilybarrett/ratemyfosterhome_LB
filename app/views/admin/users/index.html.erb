@@ -1,19 +1,27 @@
   <% if params[:search] %>
-    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-    <% unless @foster_homes.empty? %>
-      <ul>
-        <% @foster_homes.each do |foster_home| %>
-          <li><%= link_to "#{foster_home.foster_kid.last_name}", foster_kid_path(foster_home.foster_kid) %> </li>
-        <% end %>
-      </ul>
+    <% if @user_active_foster_homes.empty? && @user_inactive_foster_homes.empty? %>
+      <h3><%= @user.last_name %> is available for new case assignments.</h3>
     <% else %>
-      <h3><em>Available for new case assignments</em></h3>
+      <% if !@user_active_foster_homes.empty? %>
+        <h3><%= @user.last_name %>'s Active Cases</h3>
+        <ul>
+          <% @user_active_foster_homes.each do |active_foster_home| %>
+            <li>
+              <%= link_to "#{active_foster_home.foster_kid.last_name}", foster_home_path(active_foster_home) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if !@user_inactive_foster_homes.empty? %>
+        <h3><%= @user.last_name %>'s Archived Cases</h3>
+        <ul>
+          <% @user_inactive_foster_homes.each do |inactive_foster_home| %>
+            <li>
+              <%= link_to "#{inactive_foster_home.foster_kid.last_name}", foster_home_path(inactive_foster_home) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
-  <% else %>
-    <h3>All Social Workers Registered On Site</h3>
-      <ul>
-        <% @users.each do |user| %>
-          <li><%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></li>
-        <% end %>
-      </ul>
   <% end %>
