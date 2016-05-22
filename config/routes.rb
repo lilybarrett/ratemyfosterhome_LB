@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   get 'foster_homes/:id/unassign' => 'foster_homes#unassign',
     as: :foster_homes_unassign
 
+  get "foster_homes/:id/thank_you", to: "foster_homes#thank_you",
+    as: :foster_homes_thank_you
 end

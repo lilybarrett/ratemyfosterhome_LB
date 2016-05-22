@@ -12,7 +12,7 @@ class SocialWorkerReviewsController < ApplicationController
     @social_worker_review.user = current_user
     if @social_worker_review.save
       # ReviewMailer.new_review(@review).deliver_later
-      redirect_to foster_home_path(@foster_home)
+      redirect_to foster_homes_thank_you_path(@foster_home)
     else
       flash[:errors] = @social_worker_review.errors.full_messages.join(". ")
       render :new

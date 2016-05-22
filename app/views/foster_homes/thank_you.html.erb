@@ -1,0 +1,8 @@
+<h4>Thank you for submitting your review! We take your feedback very seriously.</h4>
+
+  <%= form_tag do %>
+    <%= label_tag :social_worker, "Are you the social worker on this case?" %>
+    <%= select_tag :social_worker, options_for_select([["No", false],["Yes", true]]), include_blank: true %>
+  <% end %>
+
+<h5 id="link_access"><%= link_to "Back", foster_home_path(@foster_home) %></h5>
