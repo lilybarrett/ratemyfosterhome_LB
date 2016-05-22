@@ -63,6 +63,18 @@ class FosterHomesController < ApplicationController
     end
   end
 
+  def unassign
+    @foster_home = FosterHome.find(params[:id])
+    @foster_home.user_id = nil
+    if @foster_home.save!
+      flash[:notice] = "This case has been successfully unassigned."
+      redirect_to foster_home_path(@foster_home)
+    else
+      flash[:error] = "Error!"
+      redirect_to foster_home_path(@foster_home)
+    end 
+  end
+
   private
 
   def foster_home_params
