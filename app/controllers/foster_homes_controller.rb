@@ -72,7 +72,11 @@ class FosterHomesController < ApplicationController
     else
       flash[:error] = "Error!"
       redirect_to foster_home_path(@foster_home)
-    end 
+    end
+  end
+
+  def thank_you
+    @foster_home = FosterHome.find(params[:id])
   end
 
   private

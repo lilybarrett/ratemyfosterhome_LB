@@ -12,7 +12,7 @@ class FosterParentReviewsController < ApplicationController
     @foster_parent_review.user = current_user
     if @foster_parent_review.save
       # ReviewMailer.new_review(@review).deliver_later
-      redirect_to foster_home_path(@foster_home)
+      redirect_to foster_homes_thank_you_path(@foster_home)
     else
       flash[:errors] = @foster_parent_review.errors.full_messages.join(". ")
       render :new
