@@ -18,7 +18,15 @@ Rails.application.routes.draw do
 
   get "home", to: "home#show"
 
-  root 'home#show'
+  devise_scope :user do
+    authenticated :user do
+      root 'home#show', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 
   get 'foster_homes/:id/unassign' => 'foster_homes#unassign',
     as: :foster_homes_unassign
