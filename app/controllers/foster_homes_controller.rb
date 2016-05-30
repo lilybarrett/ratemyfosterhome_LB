@@ -3,8 +3,8 @@ class FosterHomesController < ApplicationController
 
   def index
     if current_user.admin?
-      @active_foster_homes = FosterHome.where(active: true)
-      @inactive_foster_homes = FosterHome.where(active: false)
+      @active_foster_homes = FosterHome.where(active: true).includes(:foster_kid).order("foster_kids.last_name")
+      @inactive_foster_homes = FosterHome.where(active: false).includes(:foster_kid).order("foster_kids.last_name")
     else
       raise_error
     end

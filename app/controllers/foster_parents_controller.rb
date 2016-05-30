@@ -3,7 +3,7 @@ class FosterParentsController < ApplicationController
 
   def index
     if current_user.admin?
-      @foster_parents = FosterParent.all
+      @foster_parents = FosterParent.all.order("last_name ASC")
     else
       raise_error
     end

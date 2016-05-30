@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if current_user == @user || current_user.admin?
-      @user_active_foster_homes = @user.foster_homes.where(active: true)
-      @user_inactive_foster_homes = @user.foster_homes.where(active: false)
+      @user_active_foster_homes = @user.foster_homes.where(active: true).includes(:foster_kid).order("foster_kids.last_name")
+      @user_inactive_foster_homes = @user.foster_homes.where(active: false).includes(:foster_kid).order("foster_kids.last_name")
     else
       raise_error
     end
