@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_format_of :email, with: /\A[\w+\-.]+(@state.ma.us)\z/i, message: "(You need a state email address in order to register.)"
+
   def self.categories_for_user_dropdown
     all.map { |u| [u.last_name, u.id] }
   end
