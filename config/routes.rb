@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show, :destroy]
 
   namespace :admin do
-     resources :users, only: [:index, :update, :destroy]
+    resources :users, only: [:index, :show, :destroy]
   end
 
+  get "users/:id/update_status", to: "users#update_status",
+    as: :update_status
+
   resources :foster_kids
+
+  resources :foster_parents
 
   resources :foster_homes do
     resources :foster_kid_reviews, only: [:new, :create]
@@ -14,7 +19,11 @@ Rails.application.routes.draw do
     resources :social_worker_reviews, only: [:new, :create]
   end
 
-  resources :foster_parents
+  get "foster_homes/:id/unassign", to: 'foster_homes#unassign',
+    as: :foster_homes_unassign
+
+  get "foster_homes/:id/thank_you", to: "foster_homes#thank_you",
+    as: :foster_homes_thank_you
 
   get "home", to: "home#show"
 
@@ -28,9 +37,4 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'foster_homes/:id/unassign' => 'foster_homes#unassign',
-    as: :foster_homes_unassign
-
-  get "foster_homes/:id/thank_you", to: "foster_homes#thank_you",
-    as: :foster_homes_thank_you
 end

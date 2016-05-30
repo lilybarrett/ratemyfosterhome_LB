@@ -15,24 +15,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def update
-    if current_user.admin?
-      user = User.find(params[:id])
-      if user.admin?
-        user.admin = false
-      else
-        user.admin = true
-      end
-      user.save
-      redirect_to admin_users_path
-    else
-      raise_error
-    end
-  end
-
   def destroy
     if current_user.admin?
-      User.find(params[:id]).destroy
+      @user = User.find(params[:id])
+      @user.destroy
+      flash[:notice] = "#{@user.first_name} #{@user.last_name}'s account has been removed from the site."
       redirect_to admin_users_path
     else
       raise_error
