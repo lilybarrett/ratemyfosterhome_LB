@@ -29,11 +29,16 @@ class FosterParentsController < ApplicationController
   def create
     if current_user.admin?
       @foster_parent = FosterParent.new(foster_parent_params)
-      if @foster_parent.save
-        flash[:notice] = "Foster Parent successfully added to site"
-        redirect_to foster_parent_path(@foster_parent)
+      unless FosterParent.exists?(first_name: @foster_parent.first_name, last_name: @foster_parent.last_name)
+        if @foster_parent.save
+          flash[:notice] = "Foster Parent successfully added to site"
+          redirect_to foster_parent_path(@foster_parent)
+        else
+          flash[:error] = @foster_parent.errors.full_messages.join('. ')
+          render :new
+        end
       else
-        flash[:error] = @foster_parent.errors.full_messages.join('. ')
+        flash[:notice] = "This foster parent already exists in the database."
         render :new
       end
     else
