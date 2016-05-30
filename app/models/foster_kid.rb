@@ -9,4 +9,5 @@ class FosterKid < ActiveRecord::Base
   def self.categories_for_child_dropdown
     all.map { |u| [u.last_name, u.id] }
   end
+
 end
