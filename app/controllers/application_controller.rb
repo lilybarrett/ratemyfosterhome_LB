@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    if !user_signed_in?
-      raise_error 
+    unless user_signed_in?
+      raise_error
     end
   end
 
   def raise_error
-    raise ActionController::RoutingError.new("Only admins authorized to view this page")
+    raise ActionController::RoutingError.new("You may need admin permission to view this page.")
   end
 end

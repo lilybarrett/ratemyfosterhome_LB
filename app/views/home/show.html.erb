@@ -10,7 +10,7 @@
       <div class="small-12 columns">
         <%= form_tag(admin_users_path, :method => "get") do %>
           <%= label_tag "Find Social Worker", params[:search] %>
-          <%= select_tag :search, options_for_select(@user_results) %>
+          <%= select_tag :search, options_for_select(@user_results), include_blank: true %>
           <%= submit_tag "Search", :name => nil %>
         <% end %>
       </div>
@@ -52,6 +52,28 @@
       </div>
     </div>
 
+  <% else %>
+    <h3>Welcome, <%= @user.first_name %> <%= @user.last_name %>!</h3>
+      <% if !@user_active_foster_homes.empty? %>
+        <h3>Your active cases:</h3>
+        <% @user_active_foster_homes.each do |active_foster_home| %>
+          <ul>
+            <li><%= link_to active_foster_home.foster_kid.first_name + " " + active_foster_home.foster_kid.last_name, foster_home_path(active_foster_home) %></li>
+          </ul>
+        <% end %>
+      <% else %>
+        <h3><em>You do not currently have any active cases.</em></h3>
+      <% end %>
+      <% if !@user_inactive_foster_homes.empty? %>
+      <h3>Your archived cases:</h3>
+      <% @user_inactive_foster_homes.each do |inactive_foster_home| %>
+        <ul>
+          <li><%= link_to inactive_foster_home.foster_kid.first_name + " " + inactive_foster_home.foster_kid.last_name, foster_home_path(inactive_foster_home) %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <h3><em>You do not currently have any archived cases.</em></h3>
+    <% end %>
   <% end %>
 <% end %>
 

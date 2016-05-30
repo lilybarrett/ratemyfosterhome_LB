@@ -13,7 +13,11 @@
     <li>Social Worker: Unassigned</li>
   <% end %>
     <li>Foster Youth: <%= @foster_home.foster_kid.last_name %></li>
-    <li>Foster Parent: <%= @foster_home.foster_parent.last_name %></li>
+    <% unless @foster_home.foster_parent.nil? %>
+      <li>Foster Parent: <%= @foster_home.foster_parent.last_name %></li>
+    <% else %>
+      <li>Foster Parent: Unassigned</li>
+    <% end %>
 </ul>
 
 <script src="//code.highcharts.com/highcharts.js"></script>
@@ -44,4 +48,21 @@
     <% end %>
   <% end %>
 
-<%= link_to "Reassign Case", edit_foster_home_path(@foster_home) %> | <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home) %> | <%= link_to "Edit Foster Youth Information", edit_foster_kid_path(@foster_kid) %> | <%= link_to "Edit Foster Parent Information", edit_foster_parent_path(@foster_parent) %> | <%= link_to "Add Foster Youth Review", new_foster_home_foster_kid_review_path(@foster_home, @foster_kid_review) %> | <%= link_to "Add Foster Parent Review", new_foster_home_foster_parent_review_path(@foster_home, @foster_parent_review) %> | <%= link_to "Add Social Worker Review", new_foster_home_social_worker_review_path(@foster_home, @social_worker_review) %> |
+<% if current_user.admin? %>
+  <%= link_to "Reassign Case", edit_foster_home_path(@foster_home) %> |
+  <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home) %> |
+<% end %>
+
+<%= link_to "Edit Foster Youth Information", edit_foster_kid_path(@foster_kid) %> |
+
+<% unless @foster_home.foster_parent.nil? %>
+  <%= link_to "Edit Foster Parent Information", edit_foster_parent_path(@foster_parent) %> |
+<% end %>
+
+<%= link_to "Add Foster Youth Review", new_foster_home_foster_kid_review_path(@foster_home, @foster_kid_review) %> |
+
+<% unless @foster_home.foster_parent.nil? %>
+  <%= link_to "Add Foster Parent Review", new_foster_home_foster_parent_review_path(@foster_home, @foster_parent_review) %> |
+<% end %>
+
+<%= link_to "Add Social Worker Review", new_foster_home_social_worker_review_path(@foster_home, @social_worker_review) %> |

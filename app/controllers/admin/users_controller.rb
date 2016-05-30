@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-
   before_action :authenticate_user
 
   def index
@@ -17,18 +16,22 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.admin?
-      user.admin = false
+    if current_user.admin?
+      user = User.find(params[:id])
+      if user.admin?
+        user.admin = false
+      else
+        user.admin = true
+      end
+      user.save
+      redirect_to admin_users_path
     else
-      user.admin = true
+      raise_error
     end
-    user.save
-    redirect_to admin_users_path
   end
 
   def destroy
-    if current_user.admin? || current_user
+    if current_user.admin?
       User.find(params[:id]).destroy
       redirect_to admin_users_path
     else
