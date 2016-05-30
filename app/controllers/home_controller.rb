@@ -11,8 +11,8 @@ class HomeController < ApplicationController
       @parent_results = FosterParent.categories_for_parent_dropdown
     else
       @user = current_user
-      @user_active_foster_homes = @user.foster_homes.where(active: true)
-      @user_inactive_foster_homes = @user.foster_homes.where(active: false)
+      @user_active_foster_homes = @user.foster_homes.where(active: true).includes(:foster_kid).order("foster_kids.last_name")
+      @user_inactive_foster_homes = @user.foster_homes.where(active: false).includes(:foster_kid).order("foster_kids.last_name")
     end
   end
 end
