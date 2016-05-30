@@ -1,3 +1,11 @@
+<% if current_user.admin? %>
+  <% if @user.admin? %>
+    <h3><em>Admin</em></h3>
+  <% else %>
+    <h3><em>Non-Admin</em></h3>
+  <% end %>
+<% end %>
+
 <% if @user_active_foster_homes.empty? && @user_inactive_foster_homes.empty? %>
   <h3><%= @user.last_name %> is available for new case assignments.</h3>
 <% else %>
@@ -23,3 +31,8 @@
     </ul>
   <% end %>
 <% end %>
+
+  <% if current_user.admin? && @user != current_user %>
+    | <%= link_to "Remove User From Site", admin_user_path(@user), method: :delete %> |
+    <%= link_to "Update User's Privileges", update_status_path(@user) %> |
+  <% end %>
