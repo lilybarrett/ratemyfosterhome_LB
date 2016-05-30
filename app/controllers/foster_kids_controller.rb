@@ -5,15 +5,17 @@ class FosterKidsController < ApplicationController
     if current_user.admin?
       @foster_kids = FosterKid.all
     else
-      @user = current_user
-      @foster_kids = @user.foster_kids
+      raise_error
     end
   end
 
   def show
     @foster_kid = FosterKid.find(params[:id])
-    # @user = @foster_kid.user
-    # @homes = @foster_kid.homes
+    if current_user.admin? || FosterHome.exists?(foster_kid_id: @foster_kid, user_id: current_user)
+      render :show
+    else
+      raise_error
+    end
   end
 
   def new
@@ -25,28 +27,41 @@ class FosterKidsController < ApplicationController
   end
 
   def create
-    @foster_kid = FosterKid.new(foster_kid_params)
-    if @foster_kid.save
-      flash[:notice] = "Child successfully added to site"
-      redirect_to foster_kid_path(@foster_kid)
+    if current_user.admin?
+      @foster_kid = FosterKid.new(foster_kid_params)
+      if @foster_kid.save
+        flash[:notice] = "Child successfully added to site"
+        redirect_to authenticated_root_path
+      else
+        flash[:error] = @foster_kid.errors.full_messages.join('. ')
+        render :new
+      end
     else
-      flash[:error] = @foster_kid.errors.full_messages.join('. ')
-      render :new
+      raise_error
     end
   end
 
   def edit
     @foster_kid = FosterKid.find(params[:id])
+    if current_user.admin? || FosterHome.exists?(foster_kid_id: @foster_kid, user_id: current_user)
+      render :edit
+    else
+      raise_error
+    end
   end
 
   def update
     @foster_kid = FosterKid.find(params[:id])
-    if @foster_kid.update_attributes(foster_kid_params)
-      flash[:notice] = "Child's information successfully updated"
-      redirect_to foster_kid_path(@foster_kid)
+    if current_user.admin? || FosterHome.exists?(foster_kid_id: @foster_kid, user_id: current_user)
+      if @foster_kid.update_attributes(foster_kid_params)
+        flash[:notice] = "Child's information successfully updated"
+        redirect_to foster_kid_path(@foster_kid)
+      else
+        flash[:error] = "Please fill out all required fields."
+        render :edit
+      end
     else
-      flash[:error] = "Please fill out all required fields."
-      render :edit
+      raise_error
     end
   end
 

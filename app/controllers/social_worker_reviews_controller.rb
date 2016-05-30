@@ -3,19 +3,27 @@ class SocialWorkerReviewsController < ApplicationController
 
   def new
     @foster_home = FosterHome.find(params[:foster_home_id])
-    @social_worker_review = SocialWorkerReview.new
+    if current_user == @foster_home.user || current_user.admin?
+      @social_worker_review = SocialWorkerReview.new
+    else
+      raise_error
+    end
   end
 
   def create
     @foster_home = FosterHome.find(params[:foster_home_id])
-    @social_worker_review = @foster_home.social_worker_reviews.new(social_worker_review_params)
-    @social_worker_review.user = current_user
-    if @social_worker_review.save
-      # ReviewMailer.new_review(@review).deliver_later
-      redirect_to foster_homes_thank_you_path(@foster_home)
+    if current_user == @foster_home.user || current_user.admin?
+      @social_worker_review = @foster_home.social_worker_reviews.new(social_worker_review_params)
+      @social_worker_review.user = current_user
+      if @social_worker_review.save
+        # ReviewMailer.new_review(@review).deliver_later
+        redirect_to foster_homes_thank_you_path(@foster_home)
+      else
+        flash[:errors] = @social_worker_review.errors.full_messages.join(". ")
+        render :new
+      end
     else
-      flash[:errors] = @social_worker_review.errors.full_messages.join(". ")
-      render :new
+      raise_error
     end
   end
 
