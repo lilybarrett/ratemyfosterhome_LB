@@ -8,4 +8,5 @@ class FosterHome < ActiveRecord::Base
   has_many :social_worker_reviews
 
   validates_inclusion_of :active, :in => [true, false]
+
 end

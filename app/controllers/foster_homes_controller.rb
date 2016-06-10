@@ -12,7 +12,7 @@ class FosterHomesController < ApplicationController
 
   def show
     @foster_home = FosterHome.find(params[:id])
-    if @foster_home.user == current_user || current_user.admin?
+    if current_user.admin? || @foster_home.user == current_user
       @foster_kid = @foster_home.foster_kid
       @foster_parent = @foster_home.foster_parent
       @foster_kid_reviews = @foster_home.foster_kid_reviews
@@ -103,8 +103,11 @@ class FosterHomesController < ApplicationController
   end
 
   def thank_you
-    if current_user == @foster_home.user || current_user.admin?
-      @foster_home = FosterHome.find(params[:id])
+    @foster_home = FosterHome.find(params[:id])
+    @foster_kid = @foster_home.foster_kid
+    @foster_parent = @foster_home.foster_parent
+    if current_user.admin? || current_user == @foster_home.user
+      render :thank_you
     end
   end
 
