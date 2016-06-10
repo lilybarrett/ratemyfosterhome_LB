@@ -3,7 +3,7 @@ class SocialWorkerReviewsController < ApplicationController
 
   def new
     @foster_home = FosterHome.find(params[:foster_home_id])
-    if current_user == @foster_home.user || current_user.admin?
+    if current_user.admin? || current_user == @foster_home.user
       @social_worker_review = SocialWorkerReview.new
     else
       raise_error
@@ -12,7 +12,7 @@ class SocialWorkerReviewsController < ApplicationController
 
   def create
     @foster_home = FosterHome.find(params[:foster_home_id])
-    if current_user == @foster_home.user || current_user.admin?
+    if current_user.admin? || current_user == @foster_home.user 
       @social_worker_review = @foster_home.social_worker_reviews.new(social_worker_review_params)
       @social_worker_review.user = current_user
       if @social_worker_review.save

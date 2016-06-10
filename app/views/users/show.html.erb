@@ -31,8 +31,3 @@
     </ul>
   <% end %>
 <% end %>
-
-  <% if current_user.admin? && @user != current_user %>
-    | <%= link_to "Remove User From Site", admin_user_path(@user), method: :delete %> |
-    <%= link_to "Update User's Privileges", update_status_path(@user) %> |
-  <% end %>

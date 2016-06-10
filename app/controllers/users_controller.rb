@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def update_status
     @user = User.find(params[:id])
+   #user's status will not be updated unless they have a state email address!
     if current_user.admin?
       if @user.admin?
         @user.update_attribute :admin, false
