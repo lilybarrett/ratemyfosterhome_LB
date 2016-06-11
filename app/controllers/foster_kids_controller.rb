@@ -57,10 +57,11 @@ class FosterKidsController < ApplicationController
 
   def update
     @foster_kid = FosterKid.find(params[:id])
+    @foster_home = FosterHome.find_by(foster_kid_id: @foster_kid)
     if current_user.admin? || FosterHome.exists?(foster_kid_id: @foster_kid, user_id: current_user)
       if @foster_kid.update_attributes(foster_kid_params)
         flash[:notice] = "Child's information successfully updated"
-        redirect_to foster_kid_path(@foster_kid)
+        redirect_to foster_home_path(@foster_home)
       else
         flash[:error] = "Please fill out all required fields."
         render :edit
