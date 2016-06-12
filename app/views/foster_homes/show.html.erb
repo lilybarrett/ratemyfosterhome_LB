@@ -21,13 +21,13 @@
 </ul>
 
 <!-- <script src="//code.highcharts.com/highcharts.js"></script> -->
-<div id="container" style="width:100%; height:400px;" >
+<!-- <div id="container" style="width:100%; height:400px;" > -->
   <%= line_chart [
   {name: "Foster Youth", data: @series_a},
   {name: "Foster Parent", data: @series_b},
-  {name: "Social Worker", data: @series_b}
+  {name: "Social Worker", data: @series_c}
 ] %>
-</div>
+<!-- </div> -->
 
 <h3>Reviews</h3>
   <% if !@all_home_reviews_by_date.nil? %>
