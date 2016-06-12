@@ -18,18 +18,18 @@ class FosterHomesController < ApplicationController
       @foster_kid_reviews = @foster_home.foster_kid_reviews
       @foster_parent_reviews = @foster_home.foster_parent_reviews
       @social_worker_reviews = @foster_home.social_worker_reviews
-      @all_home_reviews = []
+      # @all_home_reviews = []
       @all_home_reviews =
         @foster_kid_reviews + @foster_parent_reviews + @social_worker_reviews
       @all_home_reviews_by_date =
         @all_home_reviews.group_by_day { |review| review.created_at }
-      @all_home_reviews_by_date.delete_if { |k,v| v.empty? }
+      @all_home_reviews_by_date.delete_if { |date, review| review.empty? }
+      @series_a = @foster_kid_reviews.map { |r| [r.created_at.strftime("%m/%d/%Y"), r.rating] }.to_h
+      @series_b = @foster_parent_reviews.map { |r| [r.created_at.strftime("%m/%d/%Y"), r.rating] }.to_h
+      @series_c = @social_worker_reviews.map { |r| [r.created_at.strftime("%m/%d/%Y"), r.rating] }.to_h
     else
       raise_error
     end
-    # @data = []
-    # @all_home_reviews.each { |review| @data << review.rating }
-    # @dates = @all_home_reviews_by_date.keys.map! { |date| date.strftime("%m/%d/%Y") }
   end
 
   def new
