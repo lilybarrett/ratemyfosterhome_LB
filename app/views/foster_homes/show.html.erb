@@ -70,10 +70,10 @@
   <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home) %> |
 <% end %>
 
-<%= link_to "Edit Foster Youth Information", edit_foster_kid_path(@foster_kid) %> |
+<%= link_to "Edit Foster Youth Information", edit_foster_home_foster_kid_path(@foster_home, @foster_kid) %> |
 
 <% unless @foster_home.foster_parent.nil? %>
-  <%= link_to "Edit Foster Parent Information", edit_foster_parent_path(@foster_parent) %> |
+  <%= link_to "Edit Foster Parent Information", edit_foster_home_foster_parent_path(@foster_home, @foster_parent) %> |
 <% end %>
 
 <%= link_to "Add Foster Youth Review", new_foster_home_foster_kid_review_path(@foster_home, @foster_kid_review) %> |

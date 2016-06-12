@@ -60,7 +60,12 @@ class FosterParentsController < ApplicationController
     if current_user.admin? || FosterHome.exists?(foster_parent_id: @foster_parent, user_id: current_user)
       if @foster_parent.update_attributes(foster_parent_params)
         flash[:notice] = "Foster Parent's information successfully updated"
-        redirect_to foster_parent_path(@foster_parent)
+        edit_origin = Rails.application.routes.recognize_path params[:route]
+        if edit_origin.include?(:foster_home_id)
+          redirect_to foster_home_path(edit_origin[:foster_home_id])
+        else
+          redirect_to foster_parent_path(@foster_parent)
+        end
       else
         flash[:error] = "Please fill out all required fields."
         render :edit
