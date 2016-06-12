@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     resources :social_worker_reviews, only: [:new, :create]
   end
 
+  resources :foster_homes do
+    resources :foster_kids, only: [:edit, :update]
+    resources :foster_parents, only: [:edit, :update]
+  end
+
   get "foster_homes/:id/unassign", to: 'foster_homes#unassign',
     as: :foster_homes_unassign
 

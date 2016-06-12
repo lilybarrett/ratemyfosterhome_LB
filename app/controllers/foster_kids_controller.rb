@@ -57,12 +57,16 @@ class FosterKidsController < ApplicationController
 
   def update
     @foster_kid = FosterKid.find(params[:id])
-    # @foster_home = FosterHome.find_by(foster_kid_id: @foster_kid)
+    @foster_home = FosterHome.find_by(foster_kid_id: @foster_kid)
     if current_user.admin? || FosterHome.exists?(foster_kid_id: @foster_kid, user_id: current_user)
       if @foster_kid.update_attributes(foster_kid_params)
         flash[:notice] = "Child's information successfully updated"
-        # redirect_to foster_home_path(@foster_home)
-        redirect_to foster_kid_path(@foster_kid)
+        edit_origin = Rails.application.routes.recognize_path params[:route]
+        if edit_origin.include?(:foster_home_id)
+          redirect_to foster_home_path(@foster_home)
+        else
+          redirect_to foster_kid_path(@foster_kid)
+        end
       else
         flash[:error] = "Please fill out all required fields."
         render :edit
