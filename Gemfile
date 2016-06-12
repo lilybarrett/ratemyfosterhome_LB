@@ -27,6 +27,8 @@ gem 'groupdate'
 
 gem 'foundation-rails'
 
+gem 'chartkick'
+
 group :test do
   gem 'database_cleaner'
 end
