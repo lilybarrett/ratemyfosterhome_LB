@@ -47,14 +47,14 @@ class FosterHomesController < ApplicationController
     if current_user.admin?
       @foster_home = FosterHome.new(foster_home_params)
       @foster_kid = FosterKid.find(params[:foster_home][:foster_kid_id])
-      unless FosterHome.exists?(foster_kid_id: @foster_kid)
+      unless FosterHome.exists?(foster_kid_id: @foster_kid, active: true)
         if @foster_home.save
           redirect_to foster_home_path(@foster_home)
         else
           redirect_to new_foster_home_path
         end
       else
-        flash[:notice] = "This foster youth has already been assigned to a case."
+        flash[:notice] = "This foster youth has already been assigned to an active case."
         redirect_to authenticated_root_path
       end
     else
