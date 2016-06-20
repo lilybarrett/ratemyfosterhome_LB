@@ -22,24 +22,7 @@
 
 <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 <div id="container" style="width:90%; height:300px;" >
-  <%= line_chart [
-  {name: "Foster Youth", data: @series_a},
-  {name: "Foster Parent", data: @series_b},
-  {name: "Social Worker", data: @series_c}
-  ], colors: ["blue", "red", "green"],
-     library: {
-       xAxis: {
-         title: {
-           text: "Date"
-         }
-       },
-       yAxis: {
-         allowDecimals: false,
-         title: {
-           text: "Rating"
-         }
-       }
-       }%>
+  <%= render "chart" %>
 </div>
 
 <h3>Reviews</h3>
