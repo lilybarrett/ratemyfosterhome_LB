@@ -50,7 +50,7 @@
 
 <% if current_user.admin? %>
   <%= link_to "Reassign Case", edit_foster_home_path(@foster_home) %> |
-  <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home) %> |
+  <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home), id: "unassign" %> |
 <% end %>
 
 <%= link_to "Edit Foster Youth Information", edit_foster_home_foster_kid_path(@foster_home, @foster_kid) %> |
