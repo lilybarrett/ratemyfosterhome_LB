@@ -1,0 +1,36 @@
+<%= line_chart [
+{name: "Foster Youth", data: @series_a},
+{name: "Foster Parent", data: @series_b},
+{name: "Social Worker", data: @series_c},
+],
+   colors: ["blue", "red", "green"],
+   library: {
+     title: {
+       text: "Case Quality Over Time"
+     },
+     tooltip: {
+       xDateFormat: '%m-%d-%Y'
+     },
+     xAxis: {
+       title: {
+         text: "Date"
+       },
+       type: 'datetime',
+       dateTimeLabelFormats: {
+         day: '%e. %b'
+       },
+       tickPixelInterval: 5,
+       tickWidth: 3,
+       minTickInterval: 240 * 3600 * 1000,
+       minRange: 30 * 24 * 3600 * 1000
+     },
+     yAxis: {
+       allowDecimals: false,
+       minorTickInterval: 1,
+       title: {
+         text: "Rating"
+       },
+       max: 10,
+       min: 0
+     }
+     }%>
