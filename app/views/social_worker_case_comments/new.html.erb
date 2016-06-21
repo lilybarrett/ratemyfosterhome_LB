@@ -1,0 +1,15 @@
+<h1>Social Worker Comment for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h1>
+
+    <%= form_for [@foster_home, @social_worker_case_comment] do |f| %>
+
+      <div class="field">
+        <%= f.label :comment, "Leave a Comment" %>
+        <%= f.text_field :comment %>
+      </div>
+
+      <div class="actions ">
+        <%= f.submit class: "button round form-button" %>
+      </div>
+    <% end %>
+
+    <%= link_to "Back", foster_home_path(@foster_home) %>

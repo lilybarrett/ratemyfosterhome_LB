@@ -6,6 +6,7 @@ class FosterHome < ActiveRecord::Base
   has_many :foster_kid_reviews
   has_many :foster_parent_reviews
   has_many :social_worker_reviews
+  has_many :social_worker_case_comments 
 
   validates_inclusion_of :active, :in => [true, false]
 

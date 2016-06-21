@@ -25,32 +25,51 @@
   <%= render "chart" %>
 </div>
 
-<h3>Reviews</h3>
-  <% if !@all_home_reviews_by_date.nil? %>
-    <% @all_home_reviews_by_date.each do |date, reviews| %>
-      <ul>
-        <h3><%= date.strftime("%m/%d/%Y") %></h3>
-        <% reviews.each do |review| %>
-          <% if @foster_kid_reviews.include?(review) %>
-          <h3>Foster Youth Review</h3>
-          <% end %>
-          <% if @foster_parent_reviews.include?(review) %>
-          <h3>Foster Parent Review</h3>
-          <% end %>
-          <% if @social_worker_reviews.include?(review) %>
-          <h3>Social Worker Review</h3>
-          <% end %>
-            <li>Rating: <%= review.rating %></li>
-            <li>Comment: <%= review.comment %></li>
+<div class="row">
+  <div class="small-6 columns">
+    <h6 class="home-column"><strong>Reviews</strong></h6>
+      <% if !@all_home_reviews_by_date.nil? %>
+        <% @all_home_reviews_by_date.each do |date, reviews| %>
+          <ul>
+            <h6><%= date.strftime("%m/%d/%Y") %></h6>
+            <% reviews.each do |review| %>
+              <% if @foster_kid_reviews.include?(review) %>
+              <h6>Foster Youth Review</h6>
+              <% end %>
+              <% if @foster_parent_reviews.include?(review) %>
+              <h6>Foster Parent Review</h6>
+              <% end %>
+              <% if @social_worker_reviews.include?(review) %>
+              <h6>Social Worker Review</h6>
+              <% end %>
+                <li>Rating: <%= review.rating %></li>
+                <li>Comment: <%= review.comment %></li>
+                <p>- - - - - - - - - - - - - -</p>
+            <% end %>
+            <br>
+          </ul>
         <% end %>
-        <br>
-      </ul>
-    <% end %>
-  <% end %>
+      <% end %>
+  </div>
+  <div class="small-6 columns">
+    <h6 class="home-column"><strong>Quick Comments</strong></h6>
+      <% if !@social_worker_case_comments.nil? %>
+        <% @social_worker_case_comments.each do |comment| %>
+          <ul>
+            <li>
+              <%= comment.created_at.strftime("%m/%d/%Y") %>: <%= comment.comment %>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
 
 <% if current_user.admin? %>
   <%= link_to "Reassign Case", edit_foster_home_path(@foster_home) %> |
   <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home), id: "unassign" %> |
+  <%= link_to "Quick Comment", new_foster_home_social_worker_case_comment_path(@foster_home) %> |
 <% end %>
 
 <%= link_to "Edit Foster Youth Information", edit_foster_home_foster_kid_path(@foster_home, @foster_kid) %> |
