@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :foster_kid_reviews, only: [:new, :create]
     resources :foster_parent_reviews, only: [:new, :create]
     resources :social_worker_reviews, only: [:new, :create]
+    resources :social_worker_case_comments, only: [:new, :create]
   end
 
   resources :foster_homes do
