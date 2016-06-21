@@ -26,7 +26,7 @@
 </div>
 
 <div class="row">
-  <div class="small-6 columns">
+  <div class="small-6 columns scrollbar">
     <h6 class="home-column"><strong>Reviews</strong></h6>
       <% if !@all_home_reviews_by_date.nil? %>
         <% @all_home_reviews_by_date.each do |date, reviews| %>
@@ -51,7 +51,7 @@
         <% end %>
       <% end %>
   </div>
-  <div class="small-6 columns">
+  <div class="small-6 columns scrollbar">
     <h6 class="home-column"><strong>Quick Comments</strong></h6>
       <% if !@social_worker_case_comments.nil? %>
         <% @social_worker_case_comments.each do |comment| %>
