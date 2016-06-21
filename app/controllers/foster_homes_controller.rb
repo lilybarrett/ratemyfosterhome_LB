@@ -76,7 +76,7 @@ class FosterHomesController < ApplicationController
     if current_user.admin?
       @foster_home = FosterHome.find(params[:id])
       if @foster_home.update_attributes(foster_home_params)
-        flash[:notice] = "Foster Home information successfully updated"
+        flash[:notice] = "Foster home information successfully updated"
         redirect_to foster_home_path(@foster_home)
       else
         flash[:error] = "Please fill out all required fields."
