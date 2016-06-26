@@ -68,7 +68,7 @@
 
 <% if current_user.admin? %>
   <%= link_to "Reassign Case", edit_foster_home_path(@foster_home) %> |
-  <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home), id: "unassign" %> |
+  <%= link_to "Unassign Case", foster_homes_unassign_path(@foster_home), data: {confirm: "Are you sure you want to unassign this case?"} %> |
   <%= link_to "Quick Comment", new_foster_home_social_worker_case_comment_path(@foster_home) %> |
 <% end %>
 
