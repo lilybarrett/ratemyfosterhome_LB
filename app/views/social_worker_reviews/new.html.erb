@@ -1,44 +1,53 @@
-<h1>New Review for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h1>
+<h4>New Review for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h4>
 
-    <h3>Reviewer Type: Social Worker</h3>
+    <h4>Reviewer Type: Social Worker</h4>
 
-    <%= form_for [@foster_home, @social_worker_review] do |f| %>
+    <div class="row">
+      <div class="small-12 small-centered columns form">
+        <%= form_for [@foster_home, @social_worker_review] do |f| %>
 
-      <div class="field">
-        <%= f.label :rating, "On a scale of 0-10, where 0 is not likely and 10 is extremely likely, how likely are you to recommend this foster home?"%>
-        <br />
-        <%= f.label :rating, "0"%>
-        <%= f.radio_button :rating, 0 %>
-        <%= f.label :rating, "1"%>
-        <%= f.radio_button :rating, 1 %>
-        <%= f.label :rating, "2"%>
-        <%= f.radio_button :rating, 2 %>
-        <%= f.label :rating, "3"%>
-        <%= f.radio_button :rating, 3 %>
-        <%= f.label :rating, "4"%>
-        <%= f.radio_button :rating, 4 %>
-        <%= f.label :rating, "5"%>
-        <%= f.radio_button :rating, 5 %>
-        <%= f.label :rating, "6"%>
-        <%= f.radio_button :rating, 6 %>
-        <%= f.label :rating, "7"%>
-        <%= f.radio_button :rating, 7 %>
-        <%= f.label :rating, "8"%>
-        <%= f.radio_button :rating, 8 %>
-        <%= f.label :rating, "9"%>
-        <%= f.radio_button :rating, 9 %>
-        <%= f.label :rating, "10"%>
-        <%= f.radio_button :rating, 10 %>
+          <div class="field">
+            <%= f.label :rating, "On a scale of 0-10, where 0 is not likely and 10 is extremely likely, how likely are you to recommend this foster home?"%>
+          </div>
+          <div class="field">
+            <%= f.label :rating, "0", class: "first-radio-button"%>
+            <%= f.radio_button :rating, 0 %>
+            <%= f.label :rating, "1"%>
+            <%= f.radio_button :rating, 1 %>
+            <%= f.label :rating, "2"%>
+            <%= f.radio_button :rating, 2 %>
+            <%= f.label :rating, "3"%>
+            <%= f.radio_button :rating, 3 %>
+            <%= f.label :rating, "4"%>
+            <%= f.radio_button :rating, 4 %>
+            <%= f.label :rating, "5"%>
+            <%= f.radio_button :rating, 5 %>
+            <%= f.label :rating, "6"%>
+            <%= f.radio_button :rating, 6 %>
+            <%= f.label :rating, "7"%>
+            <%= f.radio_button :rating, 7 %>
+            <%= f.label :rating, "8"%>
+            <%= f.radio_button :rating, 8 %>
+            <%= f.label :rating, "9"%>
+            <%= f.radio_button :rating, 9 %>
+            <%= f.label :rating, "10"%>
+            <%= f.radio_button :rating, 10 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :comment, "We appreciate your feedback! Please explain why you rated this foster home experience the way you did." %>
+            <%= f.text_field :comment %>
+          </div>
+
+          <div class="actions ">
+            <%= f.submit class: "button round form-button" %>
+          </div>
+        <% end %>
       </div>
+    </div>
 
-      <div class="field">
-        <%= f.label :comment, "We appreciate your feedback! Please explain why you rated this foster home experience the way you did." %>
-        <%= f.text_field :comment %>
+    <div class="row">
+      <div class="small-6 small-centered columns back-links">
+        <%= link_to "Back", foster_home_path(@foster_home) %>
       </div>
-
-      <div class="actions ">
-        <%= f.submit class: "button round form-button" %>
-      </div>
-    <% end %>
-
-    <%= link_to "Back", foster_home_path(@foster_home) %>
+    </div>

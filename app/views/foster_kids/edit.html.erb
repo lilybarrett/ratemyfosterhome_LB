@@ -1,18 +1,22 @@
-<h3>Update Foster Child Information</h3>
+<h4>Update Foster Child Information</h4>
 
-<%= form_for @foster_kid do |f| %>
-    <%= hidden_field_tag "route", request.env['PATH_INFO'] %>
-    <div class="field">
-      <%= f.label :first_name, "First Name" %>
-      <%= f.text_field :first_name %>
-    </div>
+<div class="row">
+  <div class="small-12 small-centered columns form">
+    <%= form_for @foster_kid do |f| %>
+        <%= hidden_field_tag "route", request.env['PATH_INFO'] %>
+        <div class="field">
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name %>
+        </div>
 
-    <div class="field">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-    </div>
+        <div class="field">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "Update", class: "button round submit" %>
-    </div>
-<% end %>
+        <div class="actions">
+          <%= f.submit "Update", class: "button round submit" %>
+        </div>
+    <% end %>
+  </div>
+</div>

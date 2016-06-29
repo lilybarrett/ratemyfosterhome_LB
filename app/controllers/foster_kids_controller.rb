@@ -18,28 +18,20 @@ class FosterKidsController < ApplicationController
     end
   end
 
-  def new
-    if current_user.admin?
-      @foster_kid = FosterKid.new
-    else
-      raise_error
-    end
-  end
-
   def create
     if current_user.admin?
       @foster_kid = FosterKid.new(foster_kid_params)
       unless FosterKid.exists?(first_name: @foster_kid.first_name, last_name: @foster_kid.last_name)
         if @foster_kid.save
           flash[:notice] = "Youth successfully added to site"
-          redirect_to authenticated_root_path
+          redirect_to foster_kid_path(@foster_kid)
         else
           flash[:error] = @foster_kid.errors.full_messages.join('. ')
-          render :new
+          redirect_to authenticated_root_path
         end
       else
         flash[:notice] = "This youth already exists in the database."
-        render :new
+        redirect_to authenticated_root_path
       end
     else
       raise_error

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get "users/:id/update_status", to: "users#update_status",
     as: :update_status
 
-  resources :foster_kids
+  resources :foster_kids, except: [:new]
 
-  resources :foster_parents
+  resources :foster_parents, except: [:new]
 
   resources :foster_homes do
     resources :foster_kid_reviews, only: [:new, :create]
