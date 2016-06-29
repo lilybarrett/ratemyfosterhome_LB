@@ -1,8 +1,16 @@
 <h4>Thank you for submitting your review! We take your feedback very seriously.</h4>
 
-  <%= form_tag do %>
-    <%= label_tag :social_worker_access, "Are you the social worker on this case?" %>
-    <%= select_tag :social_worker_access, options_for_select([["No", false],["Yes", true]]), include_blank: true %>
-  <% end %>
+<div class="row">
+  <div class="small-12 small-centered columns form">
+    <%= form_tag do %>
+      <%= label_tag :social_worker_access, "Are you the social worker on this case?" %>
+      <%= select_tag :social_worker_access, options_for_select([["No", false],["Yes", true]]), include_blank: true %>
+    <% end %>
+  </div>
+</div>
 
-<h5 id="link_access"><%= link_to "Back", foster_home_path(@foster_home) %></h5>
+<div class="row">
+  <div class="small-6 small-centered columns back-links">
+    <h5 id="link_access"><%= link_to "Back", foster_home_path(@foster_home) %></h5>
+  </div>
+</div>
