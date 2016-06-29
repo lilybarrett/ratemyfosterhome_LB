@@ -1,5 +1,7 @@
-<h1>Social Worker Comment for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h1>
+<h4>Social Worker Comment for <%= @foster_home.foster_kid.last_name %>'s Foster Home </h4>
 
+<div class="row">
+  <div class="small-12 small-centered columns form">
     <%= form_for [@foster_home, @social_worker_case_comment] do |f| %>
 
       <div class="field">
@@ -11,5 +13,11 @@
         <%= f.submit class: "button round form-button" %>
       </div>
     <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="small-6 small-centered columns back-links">
     <%= link_to "Back", foster_home_path(@foster_home) %>
+  </div>
+</div>

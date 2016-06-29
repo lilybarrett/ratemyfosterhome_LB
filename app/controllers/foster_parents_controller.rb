@@ -18,14 +18,6 @@ class FosterParentsController < ApplicationController
     end
   end
 
-  def new
-    if current_user.admin?
-      @foster_parent = FosterParent.new
-    else
-      raise_error
-    end
-  end
-
   def create
     if current_user.admin?
       @foster_parent = FosterParent.new(foster_parent_params)
@@ -35,11 +27,11 @@ class FosterParentsController < ApplicationController
           redirect_to foster_parent_path(@foster_parent)
         else
           flash[:error] = @foster_parent.errors.full_messages.join('. ')
-          render :new
+          redirect_to authenticated_root_path
         end
       else
         flash[:notice] = "This foster parent already exists in the database."
-        render :new
+        redirect_to authenticated_root_path
       end
     else
       raise_error

@@ -1,16 +1,21 @@
-<h3>Update Case Assignment</h3>
-  <%= form_for @foster_home do |f| %>
-    <div class="field">
-      <%= f.label :user_id, "Assign To:" %>
-      <%= f.select(:user_id, options_for_select(@user_results)) %>
-    </div>
+<h4>Update Case Assignment</h4>
 
-    <div class="field">
-      <%= f.label :active, "Active?" %>
-      <%= f.check_box :active %>
-    </div>
+<div class="row">
+  <div class="small-12 small-centered columns form">
+    <%= form_for @foster_home do |f| %>
+      <div class="field">
+        <%= f.label :user_id, "Assign To:" %>
+        <%= f.select(:user_id, options_for_select(@user_results)) %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit "Update Case", class: "button round submit" %>
-    </div>
-  <% end %>
+      <div class="field">
+        <%= f.label :active, "Active?" %>
+        <%= f.check_box :active %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update Case", class: "button round submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>
